@@ -4,12 +4,14 @@
         $(this).toggleClass("highlight");
     });
 });
+
 $(document).ready(function() {
     $("td").click(function() {
         let subject = $(this).text();
         alert("課程名稱: " + subject);
     });
 });
+
 $(document).ready(function() {
     $("#search").on("keyup", function() {
         let searchValue = $(this).val().toLowerCase();
