@@ -10,15 +10,30 @@ $(document).ready(function() {
         alert("課程名稱: " + subject);
     });
 
-    // 功能 3: 過濾課程，但保留單元格位置
+    // 功能 3: 過濾課程，保留時間欄位位置
     $("#search").on("keyup", function() {
         let searchValue = $(this).val().toLowerCase();
-        $("td").each(function() {
-            let text = $(this).text().toLowerCase();
-            if (text.indexOf(searchValue) > -1) {
-                $(this).css("visibility", "visible");
+        
+        $("tbody tr").each(function() {
+            let row = $(this);
+            let showRow = false;
+
+            // 檢查每個課程欄位是否符合搜尋條件
+            row.find("td:not(:first-child)").each(function() {
+                let text = $(this).text().toLowerCase();
+                if (text.indexOf(searchValue) > -1) {
+                    $(this).css("visibility", "visible");
+                    showRow = true;
+                } else {
+                    $(this).css("visibility", "hidden");
+                }
+            });
+
+            // 如果該行有符合條件的欄位，顯示時間欄位；否則隱藏整行
+            if (showRow) {
+                row.find("td:first-child").css("visibility", "visible");
             } else {
-                $(this).css("visibility", "hidden");
+                row.find("td:first-child").css("visibility", "hidden");
             }
         });
     });
