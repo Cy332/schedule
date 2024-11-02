@@ -44,6 +44,8 @@ footer {
     background: #333;
     color: #fff;
 }
+
+/* 高亮顯示選中的課程 */
 .highlight {
     background-color: #ffd54f; /* 鮮黃色 */
     color: #333;
