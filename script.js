@@ -10,11 +10,16 @@ $(document).ready(function() {
         alert("課程名稱: " + subject);
     });
 
-    // 功能 3: 過濾課程
+    // 功能 3: 過濾課程，但保留單元格位置
     $("#search").on("keyup", function() {
         let searchValue = $(this).val().toLowerCase();
-        $("td").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1);
+        $("td").each(function() {
+            let text = $(this).text().toLowerCase();
+            if (text.indexOf(searchValue) > -1) {
+                $(this).css("visibility", "visible");
+            } else {
+                $(this).css("visibility", "hidden");
+            }
         });
     });
 });
