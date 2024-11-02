@@ -1,18 +1,16 @@
-<script src="script.js">
-  $(document).ready(function() {
+$(document).ready(function() {
+    // 功能 1: 高亮選定課程
     $("td").click(function() {
         $(this).toggleClass("highlight");
     });
-});
 
-$(document).ready(function() {
+    // 功能 2: 顯示課程資訊彈窗
     $("td").click(function() {
         let subject = $(this).text();
         alert("課程名稱: " + subject);
     });
-});
 
-$(document).ready(function() {
+    // 功能 3: 過濾課程
     $("#search").on("keyup", function() {
         let searchValue = $(this).val().toLowerCase();
         $("td").filter(function() {
@@ -20,5 +18,3 @@ $(document).ready(function() {
         });
     });
 });
-
-  </script>
